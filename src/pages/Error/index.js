@@ -1,5 +1,6 @@
 import React from 'react'
 import TopHeader from './../../Components/TopHeader'
+import './error.sass'
 
 const Error = () => {
   return (

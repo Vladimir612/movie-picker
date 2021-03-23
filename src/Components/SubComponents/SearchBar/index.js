@@ -6,7 +6,7 @@ const SearchBar = (props) => {
   let { text } = props
   return (
     <form className='search-form'>
-      <input type='text' placeholder={text} name='search' />
+      <input type='text' placeholder={text} name='search' autoComplete='off' />
       <button type='submit'>
         <BsSearch size={24} />
       </button>

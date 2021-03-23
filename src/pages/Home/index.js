@@ -2,6 +2,7 @@ import React from 'react'
 import TopHeader from './../../Components/TopHeader'
 import './home.sass'
 import MoviesFilter from '../../Components/MoviesFilter'
+import Movies from '../../Components/Movies'
 import Footer from '../../Components/Footer'
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       <TopHeader firstText='Movie' secondText='Picker' left='60%' />
       <section className='movies-section'>
         <MoviesFilter />
+        <Movies />
       </section>
       <Footer />
     </div>

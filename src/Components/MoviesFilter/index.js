@@ -10,11 +10,20 @@ const MoviesFilter = () => {
         <SearchBar text='Enter the movie...' />
       </div>
       <div className='genres'>
-        <GenreButton text='melodrama' />
-        <GenreButton text='thriller' />
-        <GenreButton text='comedy' />
-        <GenreButton text='horror' />
-        <GenreButton text='action' />
+        <GenreButton text='Action' />
+        <GenreButton text='Adventure' />
+        <GenreButton text='Animation' />
+        <GenreButton text='Comedy' />
+        <GenreButton text='Crime' />
+        <GenreButton text='Documentary' />
+        <GenreButton text='Drama' />
+        <GenreButton text='Family' />
+        <GenreButton text='Fantasy' />
+        <GenreButton text='History' />
+        <GenreButton text='Horror' />
+        <GenreButton text='Music' />
+        <GenreButton text='Mystery' />
+        <GenreButton text='Romance' />
       </div>
     </div>
   )

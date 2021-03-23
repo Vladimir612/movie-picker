@@ -4,12 +4,14 @@ import styled from 'styled-components'
 const Footer = () => {
   return (
     <StyledFooter>
-      <h1>This is footer</h1>
+      <p>Copyright 2021 &copy; Vladimir Lazarevic</p>
     </StyledFooter>
   )
 }
 
 const StyledFooter = styled.footer`
+  background: #131d29;
+  color: #fff;
   width: 100%;
   height: 5rem;
   position: absolute;

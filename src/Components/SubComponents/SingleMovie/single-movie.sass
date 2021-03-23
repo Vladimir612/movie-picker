@@ -1,0 +1,59 @@
+@import '../../../media-queries-mixins.sass'
+@import '../../../Animations/animations.sass'
+
+.single-movie
+  width: 92%
+  height: 25rem
+  background: #052426
+  opacity: .8
+  position: relative
+  overflow: hidden
+  border-radius: 2.5rem
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2)
+  transition: transform .5s, opacity .5s
+  margin: auto
+  +tablet-large
+    height: 22rem!important
+    width: 95%
+  &:hover
+    cursor: pointer
+    transform: translateY(-5px)
+    opacity: 1
+    &> .overview
+      transform: translateY(0)
+      animation: opacity-late .4s ease-in-out 0s 1 alternate both
+    .movie-img
+      filter: brightness(30%)
+  .movie-img-wrapper
+    height: 80%
+    +tablet-large
+      height: 70%
+    +tablet-small
+      height: 75%
+  .movie-img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    object-position: center
+    transition: filter .6s
+  .overview
+    position: absolute
+    bottom: calc(1/5 * 100%)
+    color: #fff
+    padding: 0 1rem 1.5rem 1rem
+    text-align: center
+    transition: transform .5s
+    opacity: 0
+    transform: translateY(100%)
+    +tablet-small
+      bottom: calc(3/10 * 100%)
+      padding: 0 .1rem 1rem .1rem
+    +tablet-large
+      bottom: calc(3/10 * 100%)
+      padding: 0 .1rem 1rem .1rem
+  .title, .cast
+    color: #fff
+    padding: .4rem
+    text-align: center
+  .cast
+    font-size: .8rem

@@ -1,0 +1,15 @@
+@import '../../media-queries-mixins.sass'
+
+.movies
+  margin: 3rem 2rem 0 2rem
+
+.movie-list
+  display: grid
+  grid-template-columns: repeat(5, 1fr)
+  grid-row-gap: 2rem
+  +tablet-large
+    grid-template-columns: repeat(4, 1fr)
+  +tablet-small
+    grid-template-columns: repeat(2, 1fr)
+  +phone
+    grid-template-columns: 1fr
