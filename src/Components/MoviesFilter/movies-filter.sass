@@ -2,29 +2,29 @@
 @import '../../media-queries-mixins.sass'
 
 .movies-filter
-  height: 30vh
+  height: 50vh
   +tablet-small
-    height: 40vh
+    height: 60vh
   +phone
-    height: 50vh
+    height: 85vh
 
 .search-movie
-  height: 40%
+  height: 25%
   +align-middle
 
 .genres
-  height: 60%
+  height: 75%
   display: grid
   grid-template-columns: repeat(7, 1fr)
-  grid-row-gap: 1rem
-  margin: 1rem 6.5rem 1rem 6.5rem
+  grid-row-gap: 2rem
+  margin: 0 6.5rem 0 6.5rem
   align-content: center
   +tablet-large
     grid-template-columns: repeat(6, 1fr)
-    margin: 1rem 3.5rem 1rem 3.5rem
+    margin: 0 3.5rem 0 3.5rem
   +tablet-small
     grid-template-columns: repeat(4, 1fr)
-    margin: 1rem 2.5rem 1rem 2.5rem
+    margin: 0 2.5rem 0 2.5rem
   +phone
     grid-template-columns: repeat(3, 1fr)
-    margin: 1rem .5rem 1rem .5rem
+    margin: 0 .5rem 0 .5rem

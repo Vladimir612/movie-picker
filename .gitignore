@@ -11,6 +11,9 @@
 # production
 /build
 
+# hidden keys
+hidden-variables.js
+
 # misc
 .DS_Store
 .env.local

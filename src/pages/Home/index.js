@@ -4,14 +4,20 @@ import './home.sass'
 import MoviesFilter from '../../Components/MoviesFilter'
 import Movies from '../../Components/Movies'
 import Footer from '../../Components/Footer'
+import { GenresProvider } from '../../data/GenresContext'
+import { MoviesProvider } from '../../data/MoviesContext'
 
 const Home = () => {
   return (
     <div className='home-page'>
       <TopHeader firstText='Movie' secondText='Picker' left='60%' />
       <section className='movies-section'>
-        <MoviesFilter />
-        <Movies />
+        <GenresProvider>
+          <MoviesFilter />
+        </GenresProvider>
+        <MoviesProvider>
+          <Movies />
+        </MoviesProvider>
       </section>
       <Footer />
     </div>
