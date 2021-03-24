@@ -1,4 +1,5 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { imageUrl, popularMoviesUrl } from './apiURL'
 
 const MoviesContext = React.createContext()
 
@@ -7,22 +8,38 @@ export const useMovies = () => {
 }
 
 export const MoviesProvider = ({ children }) => {
-  // const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([])
+
+  const formatMovies = (movies) => {
+    let tempMovies = movies.map((movie) => {
+      let formattedMovie = {
+        id: movie.id,
+        movieTitle: movie.title,
+        frontImage: imageUrl + movie.poster_path,
+        backImage: movie.backdrop_path,
+        genres: movie.genre_ids,
+        overview: movie.overview,
+        releaseDate: movie.release_date,
+      }
+      return formattedMovie
+    })
+    return tempMovies
+  }
 
   const fetchPopularMovies = () => {
-    fetch(
-      'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=7d09a7a4574bfd3fe9cb9058dfbe63d4&page=1'
-    )
+    fetch(popularMoviesUrl)
       .then((response) => response.json())
-      .then((data) => console.log(data.results))
+      .then((data) => {
+        setMovies(formatMovies(data.results))
+      })
   }
 
   useEffect(() => {
     fetchPopularMovies()
-  }, [])
-  const movie = 'Catch me if you can'
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
-    <MoviesContext.Provider value={{ movie }}>
+    <MoviesContext.Provider value={{ movies }}>
       {children}
     </MoviesContext.Provider>
   )

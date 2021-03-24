@@ -2,7 +2,8 @@ import React from 'react'
 import './single-movie.sass'
 
 const SingleMovie = (props) => {
-  let { title, img, overview, release_date } = props.data
+  //I will need id for link to movie page
+  let { movieTitle, frontImage, overview, releaseDate } = props.data
   if (overview.length > 180) {
     overview = overview.substr(0, 178) + '...'
   }
@@ -10,13 +11,13 @@ const SingleMovie = (props) => {
   return (
     <div className='single-movie'>
       <div className='movie-img-wrapper'>
-        <img src={img} alt={title} className='movie-img' />
+        <img src={frontImage} alt={movieTitle} className='movie-img' />
       </div>
       <div className='title'>
-        <h3>{title}</h3>
+        <h3>{movieTitle}</h3>
       </div>
       <p className='cast'>
-        <span>Release date: {release_date}</span>
+        <span>Release date: {releaseDate}</span>
       </p>
       <p className='overview'>{overview}</p>
     </div>
