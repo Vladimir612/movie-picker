@@ -16,8 +16,6 @@ export const MoviesProvider = ({ children }) => {
         id: movie.id,
         movieTitle: movie.title,
         frontImage: imageUrl + movie.poster_path,
-        backImage: movie.backdrop_path,
-        genres: movie.genre_ids,
         overview: movie.overview,
         releaseDate: movie.release_date,
       }
