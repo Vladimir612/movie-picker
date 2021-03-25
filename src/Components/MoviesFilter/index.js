@@ -14,7 +14,7 @@ const MoviesFilter = () => {
       </div>
       <div className='genres'>
         {genres.map((genre) => {
-          return <GenreButton key={genre.id} text={genre.name} />
+          return <GenreButton key={genre.id} text={genre.name} id={genre.id} />
         })}
       </div>
     </div>

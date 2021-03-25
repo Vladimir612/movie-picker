@@ -1,15 +1,16 @@
-@import '../../../media-queries-mixins.sass'
-@import '../../../Animations/animations.sass'
+@import '../../../media-queries-mixins'
+@import '../../../Animations/animations'
+@import '../../../variables'
 
 .single-movie
   width: 92%
   height: 25rem
-  background: #052426
+  background: $darkBlue
   opacity: .8
   position: relative
   overflow: hidden
   border-radius: 2.5rem
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2)
+  box-shadow: 0px 10px 10px transparentize($black, 0.4)
   transition: transform .5s, opacity .5s
   margin: auto
   +tablet-large
@@ -39,7 +40,7 @@
   .overview
     position: absolute
     bottom: calc(1/5 * 100%)
-    color: #fff
+    color: $white
     padding: 0 1rem 1.5rem 1rem
     text-align: center
     transition: transform .5s
@@ -52,7 +53,7 @@
       bottom: calc(3/10 * 100%)
       padding: 0 .1rem 1rem .1rem
   .title, .cast
-    color: #fff
+    color: $white
     padding: .4rem
     text-align: center
   .cast

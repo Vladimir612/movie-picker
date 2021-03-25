@@ -12,10 +12,10 @@ const Home = () => {
     <div className='home-page'>
       <TopHeader firstText='Movie' secondText='Picker' left='60%' />
       <section className='movies-section'>
-        <GenresProvider>
-          <MoviesFilter />
-        </GenresProvider>
         <MoviesProvider>
+          <GenresProvider>
+            <MoviesFilter />
+          </GenresProvider>
           <Movies />
         </MoviesProvider>
       </section>

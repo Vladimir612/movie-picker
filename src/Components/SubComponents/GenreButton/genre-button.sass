@@ -1,3 +1,5 @@
+@import '../../../variables'
+
 .genre-button
   height: 2.2rem
   min-width: 6.2rem
@@ -5,13 +7,13 @@
   border: none
   border-radius: 1rem
   margin: 0 .5rem 0 .5rem
-  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.2)
-  background: #052426
-  color: #fff
+  box-shadow: 0px 10px 10px transparentize($black, .6)
+  background: $darkBlue
+  color: $white
   font-weight: 600
   transition: all .7s
-  &:hover
-    cursor: pointer
+  cursor: pointer
+  &:hover, &.active
     transform: scale(1.05)
-    background: #4e58599e
-    color: #052426
+    background: $mainGray
+    color: $darkBlue

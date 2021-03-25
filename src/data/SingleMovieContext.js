@@ -8,6 +8,7 @@ export const useSingleMovie = () => {
 }
 
 export const SingleMovieProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true)
   const [singleMovie, setSingleMovie] = useState({})
 
   const formatSingleMovie = (singleMovie) => {
@@ -17,8 +18,9 @@ export const SingleMovieProvider = ({ children }) => {
     let formattedMovie = {
       id: singleMovie.id,
       movieTitle: singleMovie.title,
-      frontImage: imageUrl + singleMovie.poster_path,
-      backImage: imageUrl + singleMovie.backdrop_path,
+      frontImage: singleMovie.poster_path && imageUrl + singleMovie.poster_path,
+      backImage:
+        singleMovie.backdrop_path && imageUrl + singleMovie.backdrop_path,
       genres: genres,
       overview: singleMovie.overview,
       homepage: singleMovie.homepage,
@@ -29,15 +31,24 @@ export const SingleMovieProvider = ({ children }) => {
   }
 
   const getSingleMovie = (url) => {
+    setLoading(true)
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
         setSingleMovie(formatSingleMovie(data))
       })
+      .then(
+        //just a little pause so with fast internet doesnt look like a flash
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000)
+      )
   }
 
   return (
-    <SingleMovieContext.Provider value={{ getSingleMovie, singleMovie }}>
+    <SingleMovieContext.Provider
+      value={{ getSingleMovie, singleMovie, loading }}
+    >
       {children}
     </SingleMovieContext.Provider>
   )

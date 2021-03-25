@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react'
 import { specificMovieUrl } from '../../data/apiURL'
 import { useSingleMovie } from './../../data/SingleMovieContext'
+import defaultImg from '../../img/defaultImage.png'
+import defaultBgImg from '../../img/defaultImageBg.jpg'
 import './movie.sass'
+import Loader from '../../Components/Loader'
 
 const Movie = (props) => {
   const slug = props.match.params.movie
   let finalUrl = specificMovieUrl.replace('movie-id', slug)
-  const { getSingleMovie, singleMovie } = useSingleMovie()
+  const { getSingleMovie, singleMovie, loading } = useSingleMovie()
 
   const formattedGenres =
     singleMovie.genres &&
@@ -24,19 +27,29 @@ const Movie = (props) => {
     (singleMovie.runTime % 60) +
     'min'
 
-  console.log(singleMovie)
   useEffect(() => {
     getSingleMovie(finalUrl)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
+  return loading ? (
+    <div className='loader-wrapper whole-page'>
+      <Loader />
+    </div>
+  ) : (
     <div className='movie-page'>
       <div
         className='back-image'
-        style={{ backgroundImage: `url(${singleMovie.backImage})` }}
+        style={{
+          backgroundImage: `url(${
+            singleMovie.backImage ? singleMovie.backImage : defaultBgImg
+          })`,
+        }}
       ></div>
       <div className='movie-poster'>
-        <img src={singleMovie.frontImage} alt={singleMovie.movieTitle} />
+        <img
+          src={singleMovie.frontImage ? singleMovie.frontImage : defaultImg}
+          alt={singleMovie.movieTitle}
+        />
       </div>
       <div className='movie-info'>
         <h1 className='movie-title'>{singleMovie.movieTitle}</h1>

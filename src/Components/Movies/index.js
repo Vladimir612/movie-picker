@@ -1,14 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useMovies } from '../../data/MoviesContext'
+import Loader from '../Loader'
 import SingleMovie from '../SubComponents/SingleMovie'
 import './movies.sass'
 
 const Movies = () => {
-  const { movies } = useMovies()
-
-  console.log(movies)
-  return (
+  let { movies, loading } = useMovies()
+  return loading ? (
+    <div className='loader-wrapper'>
+      <Loader />
+    </div>
+  ) : (
     <div className='movies'>
       <div className='movie-list'>
         {movies.map((movie) => {

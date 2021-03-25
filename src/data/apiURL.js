@@ -7,3 +7,5 @@ export const genreUrl = `${url}/genre/movie/list?&api_key=${visibleApiKey}`
 export const imageUrl = 'https://image.tmdb.org/t/p/original'
 export const popularMoviesUrl = `${url}/discover/movie?sort_by=popularity.desc&api_key=${visibleApiKey}&page=1`
 export const specificMovieUrl = `${url}/movie/movie-id?api_key=${visibleApiKey}`
+export const movieOnKeywordUrl = `${url}/search/movie?&api_key=${visibleApiKey}&query=`
+export const movieOnGenreUrl = `${url}/discover/movie?&api_key=${visibleApiKey}&page=1&with_genres=`

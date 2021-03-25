@@ -1,4 +1,5 @@
 import React from 'react'
+import defaultImg from '../../../img/defaultImage.png'
 import './single-movie.sass'
 
 const SingleMovie = (props) => {
@@ -11,7 +12,11 @@ const SingleMovie = (props) => {
   return (
     <div className='single-movie'>
       <div className='movie-img-wrapper'>
-        <img src={frontImage} alt={movieTitle} className='movie-img' />
+        <img
+          src={frontImage ? frontImage : defaultImg}
+          alt={movieTitle}
+          className='movie-img'
+        />
       </div>
       <div className='title'>
         <h3>{movieTitle}</h3>

@@ -1,0 +1,34 @@
+@import '../../Animations/animations'
+@import '../../variables'
+
+.loading
+  width: 12.5rem
+  height: 12.5rem
+  box-sizing: border-box
+  border-radius: 50%
+  border-top: 10px solid $loader-col1
+  position: relative
+  animation: rotate1 2s linear infinite
+  &::before, &::after
+    content: ''
+    width: 12.5rem
+    height: 12.5rem
+    position: absolute
+    left: 0
+    top: -10px
+    box-sizing: border-box
+    border-radius: 50%
+  &::before
+    border-top: 10px solid $loader-col2
+    transform: rotate(120deg)
+  &::after
+    border-top: 10px solid $loader-col3
+    transform: rotate(240deg)
+  span
+    position: absolute
+    width: 12.5rem
+    height: 12.5rem
+    color: $white
+    text-align: center
+    line-height: 12.5rem
+    animation: rotate2 2s linear infinite
