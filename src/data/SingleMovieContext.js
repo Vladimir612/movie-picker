@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { imageUrl } from './apiURL'
+import { backImageUrl, imageUrl } from './apiURL'
 
 const SingleMovieContext = React.createContext()
 
@@ -20,7 +20,7 @@ export const SingleMovieProvider = ({ children }) => {
       movieTitle: singleMovie.title,
       frontImage: singleMovie.poster_path && imageUrl + singleMovie.poster_path,
       backImage:
-        singleMovie.backdrop_path && imageUrl + singleMovie.backdrop_path,
+        singleMovie.backdrop_path && backImageUrl + singleMovie.backdrop_path,
       genres: genres,
       overview: singleMovie.overview,
       homepage: singleMovie.homepage,
