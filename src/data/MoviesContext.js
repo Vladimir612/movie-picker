@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {
+  discoverUrl,
   imageUrl,
-  movieOnGenreUrl,
   movieOnKeywordUrl,
   popularMoviesUrl,
 } from './apiURL'
@@ -15,7 +15,48 @@ export const useMovies = () => {
 export const MoviesProvider = ({ children }) => {
   const [loading, setLoading] = useState(true)
   const [movies, setMovies] = useState([])
-  const [activeGenre, setActiveGenre] = useState('')
+  const [selectedGenres, setSelectedGenres] = useState([])
+  const [universalUrl, setUniversalUrl] = useState(discoverUrl)
+
+  const changeSelectedGenres = (genreId) => {
+    if (!selectedGenres.includes(genreId)) {
+      setSelectedGenres([...selectedGenres, genreId])
+    } else {
+      let newArr = [...selectedGenres]
+      let index = selectedGenres.indexOf(genreId)
+      newArr.splice(index, 1)
+      console.log(newArr)
+      setSelectedGenres(newArr)
+    }
+  }
+
+  // useEffect(() => {
+  //   console.log(universalUrl)
+  // }, [universalUrl])
+
+  useEffect(() => {
+    fetchMoviesBasedOnGenre(selectedGenres)
+  }, [selectedGenres]) // eslint-disable-line react-hooks/exhaustive-deps
+
+  const fetchMoviesBasedOnGenre = (selectedGenres) => {
+    let finalUrl = universalUrl
+    for (let i = 0; i < selectedGenres.length; i++) {
+      setUniversalUrl(universalUrl + '&with_genres=' + selectedGenres[i])
+      finalUrl += '&with_genres=' + selectedGenres[i]
+    }
+    setLoading(true)
+    fetch(finalUrl)
+      .then((response) => response.json())
+      .then((data) => {
+        setMovies(formatMovies(data.results))
+      })
+      .then(
+        //just a little pause so with fast internet doesnt look like a flash
+        setTimeout(() => {
+          setLoading(false)
+        }, 1000)
+      )
+  }
 
   const formatMovies = (movies) => {
     let tempMovies = movies.map((movie) => {
@@ -62,8 +103,7 @@ export const MoviesProvider = ({ children }) => {
       )
   }
 
-  const fetchMoviesBasedOnGenre = (genreId) => {
-    setActiveGenre(genreId)
+  /* const fetchMoviesBasedOnGenre = (genreId) => {
     setLoading(true)
     let finalUrl = movieOnGenreUrl + genreId
     fetch(finalUrl)
@@ -78,6 +118,7 @@ export const MoviesProvider = ({ children }) => {
         }, 1000)
       )
   }
+  */
 
   useEffect(() => {
     fetchPopularMovies()
@@ -89,8 +130,9 @@ export const MoviesProvider = ({ children }) => {
         loading,
         movies,
         fetchMoviesBasedOnKeyword,
-        fetchMoviesBasedOnGenre,
-        activeGenre,
+        setSelectedGenres,
+        selectedGenres,
+        changeSelectedGenres,
       }}
     >
       {children}

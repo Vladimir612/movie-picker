@@ -67,9 +67,11 @@ const Movie = (props) => {
           </ul>
         </div>
         <div className='movie-overview'>{singleMovie.overview}</div>
-        <span className='movie-duration'>Duration: {duration}</span>
-        <span className='separator'>|</span>
-        <span className='movie-status'>Status: {singleMovie.status}</span>
+        <div className='more-info'>
+          <span className='movie-duration'>Duration: {duration}</span>
+          <span className='separator'>|</span>
+          <span className='movie-status'>Status: {singleMovie.status}</span>
+        </div>
 
         {singleMovie.homepage && singleMovie.homepage.includes('netflix') && (
           <div className='watch-link'>

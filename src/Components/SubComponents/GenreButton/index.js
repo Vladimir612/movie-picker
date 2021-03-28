@@ -4,13 +4,15 @@ import './genre-button.sass'
 
 const GenreButton = (props) => {
   let { text } = props
-  const { fetchMoviesBasedOnGenre, activeGenre } = useMovies()
+  const { selectedGenres, changeSelectedGenres } = useMovies()
 
-  let shouldBeMarked = activeGenre === props.id
+  let shouldBeMarked = selectedGenres.includes(props.id)
   return (
     <button
       className={shouldBeMarked ? 'genre-button active' : 'genre-button'}
-      onClick={() => fetchMoviesBasedOnGenre(props.id)}
+      onClick={() => {
+        changeSelectedGenres(props.id)
+      }}
     >
       {text}
     </button>
