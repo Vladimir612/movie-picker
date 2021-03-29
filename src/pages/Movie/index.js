@@ -5,6 +5,8 @@ import defaultImg from '../../img/defaultImage.png'
 import defaultBgImg from '../../img/defaultImageBg.jpg'
 import './movie.sass'
 import Loader from '../../Components/Loader'
+import { IoArrowBackOutline } from 'react-icons/io5'
+import { Link } from 'react-router-dom'
 
 const Movie = (props) => {
   const slug = props.match.params.movie
@@ -37,6 +39,13 @@ const Movie = (props) => {
     </div>
   ) : (
     <div className='movie-page'>
+      <div className='back-button-wrapper'>
+        <Link to='/'>
+          <button className='back'>
+            <IoArrowBackOutline size={25} />
+          </button>
+        </Link>
+      </div>
       <div
         className='back-image'
         style={{

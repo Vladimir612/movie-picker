@@ -4,6 +4,20 @@
 
 .movie-page
   position: relative
+  .back-button-wrapper
+    position: absolute
+    z-index: 1
+    top: 1rem
+    left: 1rem
+    .back
+      +align-middle
+      width: 3rem
+      height: 3rem
+      border: none
+      border-radius: 100%
+      background: $lightBlue
+      color: $darkBlue
+      cursor: pointer
   .back-image
     height: 100vh
     background-size: cover
@@ -35,7 +49,7 @@
       left: initial
       transform: translateY(-50%)
       margin: 0rem 1rem 0rem 1rem
-      padding-bottom: 1rem
+      padding: 1rem 0 1rem 0
       height: 100%
       overflow-y: scroll
       overflow-x: hidden
