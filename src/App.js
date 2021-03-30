@@ -2,21 +2,20 @@ import Home from './pages/Home'
 import Movie from './pages/Movie'
 import Actor from './pages/Actor'
 import Error from './pages/Error'
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Redirect } from 'react-router-dom'
 import { SingleMovieProvider } from './data/SingleMovieContext'
 
 const App = () => {
   return (
-    <>
-      <Switch>
+    <Switch>
+      <SingleMovieProvider>
         <Route exact path='/' component={Home} />
-        <SingleMovieProvider>
-          <Route exact path='/movies/:movie' component={Movie} />
-        </SingleMovieProvider>
+        <Route exact path='/movies/:movie' component={Movie} />
         <Route exact path='/actors/:actor' component={Actor} />
-        <Route component={Error} />
-      </Switch>
-    </>
+        <Route exact path='/404' component={Error} />
+        <Redirect to='/404' />
+      </SingleMovieProvider>
+    </Switch>
   )
 }
 
