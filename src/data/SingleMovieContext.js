@@ -43,6 +43,7 @@ export const SingleMovieProvider = ({ children }) => {
           setLoading(false)
         }, 1000)
       )
+      .catch((error) => console.log(error))
   }
 
   return (

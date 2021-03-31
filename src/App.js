@@ -7,14 +7,16 @@ import { SingleMovieProvider } from './data/SingleMovieContext'
 
 const App = () => {
   return (
-    <Switch>
-      <SingleMovieProvider>
-        <Route exact path='/' component={Home} />
-        <Route exact path='/movies/:movie' component={Movie} />
-        <Route exact path='/actors/:actor' component={Actor} />
-        <Route path='*' component={Error} />
-      </SingleMovieProvider>
-    </Switch>
+    <>
+      <Switch>
+        <SingleMovieProvider>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/movies/:movie' component={Movie} />
+          <Route exact path='/actors/:actor' component={Actor} />
+          <Route path='/404' component={Error} />
+        </SingleMovieProvider>
+      </Switch>
+    </>
   )
 }
 
