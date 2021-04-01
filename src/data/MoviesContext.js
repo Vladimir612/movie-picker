@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {
-  discoverUrl,
   imageUrl,
   movieOnKeywordUrl,
   popularMoviesUrl,
+  movieOnGenreUrl,
 } from './apiURL'
 
 const MoviesContext = React.createContext()
@@ -33,9 +33,9 @@ export const MoviesProvider = ({ children }) => {
   }, [selectedGenres]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const fetchMoviesBasedOnGenre = (selectedGenres) => {
-    let finalUrl = discoverUrl
+    let finalUrl = movieOnGenreUrl
     for (let i = 0; i < selectedGenres.length; i++) {
-      finalUrl += '&with_genres=' + selectedGenres[i]
+      finalUrl += selectedGenres[i] + '||'
     }
     setLoading(true)
     fetch(finalUrl)
