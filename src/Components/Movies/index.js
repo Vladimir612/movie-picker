@@ -7,6 +7,24 @@ import './movies.sass'
 
 const Movies = () => {
   let { movies, loading } = useMovies()
+
+  const addAnimationToTitle = () => {
+    let titles2 = document.querySelectorAll('.title')
+    titles2.forEach((element) => {
+      if (element.firstChild.clientHeight > element.clientHeight) {
+        element.firstChild.classList.add('animated')
+      } else {
+        element.firstChild.classList.remove('animated')
+      }
+    })
+  }
+
+  React.useEffect(() => {
+    if (!loading) addAnimationToTitle()
+  }, [loading])
+
+  window.addEventListener('resize', addAnimationToTitle)
+
   return loading ? (
     <div className='loader-wrapper'>
       <Loader />

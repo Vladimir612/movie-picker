@@ -18,12 +18,14 @@ const SingleMovie = (props) => {
           className='movie-img'
         />
       </div>
-      <div className='title'>
-        <h3>{movieTitle}</h3>
+      <div className='movie-info'>
+        <div className='title'>
+          <h3 title={movieTitle}>{movieTitle}</h3>
+        </div>
+        <p className='release'>
+          <span>Release date: {releaseDate}</span>
+        </p>
       </div>
-      <p className='cast'>
-        <span>Release date: {releaseDate}</span>
-      </p>
       <p className='overview'>{overview}</p>
     </div>
   )
