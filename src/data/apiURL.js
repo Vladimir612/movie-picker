@@ -11,3 +11,7 @@ export const popularMoviesUrl = `${url}/discover/movie?sort_by=popularity.desc&a
 export const specificMovieUrl = `${url}/movie/movie-id?api_key=${visibleApiKey}`
 export const movieOnKeywordUrl = `${url}/search/movie?&api_key=${visibleApiKey}&query=`
 export const movieOnGenreUrl = `${url}/discover/movie?&api_key=${visibleApiKey}&page=1&with_genres=`
+
+export const movieCreditsUrl = `${url}/movie/movie-id/credits?api_key=${visibleApiKey}&language=en-US`
+
+export const trendingActors = `${url}/trending/person/week?api_key=${visibleApiKey}`

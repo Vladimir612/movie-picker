@@ -7,6 +7,8 @@ import Footer from '../../Components/Footer'
 import { GenresProvider } from '../../data/GenresContext'
 import { MoviesProvider } from '../../data/MoviesContext'
 import { useScroll } from '../../data/ScrollContext'
+import { ActorsProvider } from '../../data/ActorsContext'
+import Actors from '../../Components/Actors'
 
 const Home = () => {
   let { shouldScroll } = useScroll()
@@ -31,6 +33,11 @@ const Home = () => {
           </GenresProvider>
           <Movies />
         </MoviesProvider>
+      </section>
+      <section className='actors-section'>
+        <ActorsProvider>
+          <Actors />
+        </ActorsProvider>
       </section>
       <Footer />
     </div>

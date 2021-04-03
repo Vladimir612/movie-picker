@@ -26,8 +26,10 @@ const Movies = () => {
   window.addEventListener('resize', addAnimationToTitle)
 
   return loading ? (
-    <div className='loader-wrapper'>
-      <Loader />
+    <div className='movies'>
+      <div className='loader-wrapper'>
+        <Loader />
+      </div>
     </div>
   ) : (
     <div className='movies'>
