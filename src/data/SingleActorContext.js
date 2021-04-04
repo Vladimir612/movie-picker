@@ -34,7 +34,6 @@ export const SingleActorProvider = ({ children }) => {
       let frontImage = movie.poster_path && imageUrl + movie.poster_path
       return { id, movieTitle, frontImage, overview, releaseDate }
     })
-    console.log(newArr)
     return newArr
   }
 

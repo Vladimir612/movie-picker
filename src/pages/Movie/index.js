@@ -1,20 +1,30 @@
 import React, { useEffect } from 'react'
-import { specificMovieUrl } from '../../data/apiURL'
+import { movieCreditsUrl, specificMovieUrl } from '../../data/apiURL'
 import { useSingleMovie } from './../../data/SingleMovieContext'
 import defaultImg from '../../img/defaultImage.png'
 import defaultBgImg from '../../img/defaultImageBg.jpg'
 import './movie.sass'
 import Loader from '../../Components/Loader'
 import { IoArrowBackOutline } from 'react-icons/io5'
-import { useHistory } from 'react-router-dom'
+import { useHistory, Link } from 'react-router-dom'
 import { useScroll } from '../../data/ScrollContext'
+import SingleActor from '../../Components/SubComponents/SingleActor'
 
 const Movie = (props) => {
   const history = useHistory()
   let { setShouldScroll, setPositionTo } = useScroll()
+
   const slug = props.match.params.movie
   let finalUrl = specificMovieUrl.replace('movie-id', slug)
-  const { getSingleMovie, singleMovie, loading } = useSingleMovie()
+  let movieActorsUrl = movieCreditsUrl.replace('movie-id', slug)
+  const {
+    getSingleMovie,
+    getMovieActors,
+    singleMovie,
+    movieActors,
+    loading,
+    loadingActors,
+  } = useSingleMovie()
 
   const formattedGenres =
     singleMovie.genres &&
@@ -34,9 +44,10 @@ const Movie = (props) => {
 
   useEffect(() => {
     getSingleMovie(finalUrl)
+    getMovieActors(movieActorsUrl)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  return loading ? (
+  return loading && loadingActors ? (
     <div className='loader-wrapper whole-page'>
       <Loader />
     </div>
@@ -99,6 +110,17 @@ const Movie = (props) => {
             )}
           </div>
         )}
+
+        <h2 className='cast'>Cast: </h2>
+        <div className='movie-actors'>
+          {movieActors.map((actor) => {
+            return (
+              <Link key={actor.id} to={`/actors/${actor.id}`}>
+                <SingleActor data={actor} />
+              </Link>
+            )
+          })}
+        </div>
       </div>
     </div>
   )
