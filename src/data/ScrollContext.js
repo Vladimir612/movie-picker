@@ -8,8 +8,11 @@ export const useScroll = () => {
 
 export const ScrollProvider = ({ children }) => {
   const [shouldScroll, setShouldScroll] = useState(false)
+  const [positionTo, setPositionTo] = useState()
   return (
-    <ScrollContext.Provider value={{ shouldScroll, setShouldScroll }}>
+    <ScrollContext.Provider
+      value={{ shouldScroll, setShouldScroll, positionTo, setPositionTo }}
+    >
       {children}
     </ScrollContext.Provider>
   )

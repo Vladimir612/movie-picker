@@ -28,7 +28,6 @@ export const ActorsProvider = ({ children }) => {
     fetch(trendingActors)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setActors(formatActors(data.results))
       })
       .then(

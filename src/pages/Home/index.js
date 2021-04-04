@@ -11,18 +11,32 @@ import { ActorsProvider } from '../../data/ActorsContext'
 import Actors from '../../Components/Actors'
 
 const Home = () => {
-  let { shouldScroll } = useScroll()
-
-  useEffect(() => {
-    const element = document.querySelector('.movies-section')
-    if (shouldScroll) {
-      element.scrollIntoView({
+  let { shouldScroll, positionTo } = useScroll()
+  const scrollFunc = () => {
+    const element1 = document.querySelector('.movies-section')
+    const element2 = document.querySelector('.actors-section')
+    if (shouldScroll && positionTo === 1) {
+      element1.scrollIntoView({
         behavior: 'smooth',
-        block: 'end',
-        inline: 'nearest',
+        block: 'start',
+        inline: 'end',
       })
     }
+    if (shouldScroll && positionTo === 2) {
+      element2.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'end',
+      })
+    }
+  }
+
+  useEffect(() => {
+    setTimeout(() => {
+      scrollFunc()
+    }, 1000)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className='home-page'>
       <TopHeader firstText='Movie' secondText='Picker' left='60%' />
@@ -39,7 +53,9 @@ const Home = () => {
           <Actors />
         </ActorsProvider>
       </section>
-      <Footer />
+      <section className='footer-section'>
+        <Footer />
+      </section>
     </div>
   )
 }

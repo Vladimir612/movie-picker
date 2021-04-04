@@ -22,9 +22,11 @@ const SingleMovie = (props) => {
         <div className='title'>
           <h3 title={movieTitle}>{movieTitle}</h3>
         </div>
-        <p className='release'>
-          <span>Release date: {releaseDate}</span>
-        </p>
+        {releaseDate && (
+          <p className='release'>
+            <span>Release date: {releaseDate}</span>
+          </p>
+        )}
       </div>
       <p className='overview'>{overview}</p>
     </div>

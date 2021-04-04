@@ -15,3 +15,5 @@ export const movieOnGenreUrl = `${url}/discover/movie?&api_key=${visibleApiKey}&
 export const movieCreditsUrl = `${url}/movie/movie-id/credits?api_key=${visibleApiKey}&language=en-US`
 
 export const trendingActors = `${url}/trending/person/week?api_key=${visibleApiKey}`
+export const specificActorMoviesUrl = `${url}/person/person-id/movie_credits?api_key=${visibleApiKey}&language=en-US`
+export const specificActorDataUrl = `${url}/person/person-id?api_key=${visibleApiKey}&language=en-US`

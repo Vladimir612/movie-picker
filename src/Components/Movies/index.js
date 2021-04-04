@@ -21,15 +21,13 @@ const Movies = () => {
 
   React.useEffect(() => {
     if (!loading) addAnimationToTitle()
-  }, [loading])
+  }, [loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
   window.addEventListener('resize', addAnimationToTitle)
 
   return loading ? (
-    <div className='movies'>
-      <div className='loader-wrapper'>
-        <Loader />
-      </div>
+    <div className='loader-wrapper'>
+      <Loader />
     </div>
   ) : (
     <div className='movies'>

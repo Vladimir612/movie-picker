@@ -6,11 +6,12 @@ import defaultBgImg from '../../img/defaultImageBg.jpg'
 import './movie.sass'
 import Loader from '../../Components/Loader'
 import { IoArrowBackOutline } from 'react-icons/io5'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useScroll } from '../../data/ScrollContext'
 
 const Movie = (props) => {
-  let { setShouldScroll } = useScroll()
+  const history = useHistory()
+  let { setShouldScroll, setPositionTo } = useScroll()
   const slug = props.match.params.movie
   let finalUrl = specificMovieUrl.replace('movie-id', slug)
   const { getSingleMovie, singleMovie, loading } = useSingleMovie()
@@ -42,11 +43,16 @@ const Movie = (props) => {
   ) : (
     <div className='movie-page'>
       <div className='back-button-wrapper'>
-        <Link to='/'>
-          <button className='back' onClick={() => setShouldScroll(true)}>
-            <IoArrowBackOutline size={25} />
-          </button>
-        </Link>
+        <button
+          className='back'
+          onClick={() => {
+            setShouldScroll(true)
+            setPositionTo(1)
+            history.goBack()
+          }}
+        >
+          <IoArrowBackOutline size={25} />
+        </button>
       </div>
       <div
         className='back-image'

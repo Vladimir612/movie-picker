@@ -4,8 +4,10 @@ import './single-actor.sass'
 
 const SingleActor = (props) => {
   let { actorName, frontImage } = props.data
+  let shouldHover = props.hover && props.hover
+
   return (
-    <div className='single-actor'>
+    <div className={shouldHover ? 'single-actor hover' : 'single-actor'}>
       <div className='actor-img-wrapper'>
         <img
           src={frontImage ? frontImage : defaultImg}

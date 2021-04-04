@@ -14,9 +14,17 @@
   backdrop-filter: blur(.6rem)
   +align-middle
   flex-direction: column
+  transition: all .35s
+  &.hover:hover
+    cursor: pointer
+    transform: translateY(-10px)
+    opacity: 1
+    &> .actor-img-wrapper
+      transform: scale(1.05)
   +tablet-large
     width: 12rem
   .actor-img-wrapper
+    transition: transform .35s
     height: 100%
     width: 100%
     +align-middle
