@@ -2,6 +2,17 @@
 @import '../../mixins'
 @import '../../media-queries-mixins'
 
+=actor-info-responsive
+  overflow-y: scroll
+  grid-template-columns: 1fr
+  grid-template-rows: 60% 100%
+
+=actor-bio-movies-responsive
+  height: fit-content
+  width: initial
+  +align-middle
+  flex-direction: column
+
 .actor-page
   height: 100vh
   background-image: url('../../img/mainBg.jpg')
@@ -38,36 +49,21 @@
     display: grid
     grid-template-columns: repeat(2, 1fr)
     +tablet-large
-      overflow-y: scroll
-      grid-template-columns: 1fr
-      grid-template-rows: 60% 100%
+      +actor-info-responsive
     +tablet-small
-      overflow-y: scroll
-      grid-template-columns: 1fr
-      grid-template-rows: 60% 100%
+      +actor-info-responsive
     +phone
-      overflow-y: scroll
-      grid-template-columns: 1fr
-      grid-template-rows: 60% 100%
+      +actor-info-responsive
   .actor-bio-movies
     padding: 1rem 2rem 1rem 2rem
     overflow-y: scroll
     width: 40rem
     +tablet-large
-      height: fit-content
-      width: initial
-      +align-middle
-      flex-direction: column
+      +actor-bio-movies-responsive
     +tablet-small
-      height: fit-content
-      width: initial
-      +align-middle
-      flex-direction: column
+      +actor-bio-movies-responsive
     +phone
-      height: fit-content
-      width: initial
-      +align-middle
-      flex-direction: column
+      +actor-bio-movies-responsive
     h2
       color: $white
       font-size: 2rem

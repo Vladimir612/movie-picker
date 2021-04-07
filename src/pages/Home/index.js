@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import TopHeader from './../../Components/TopHeader'
 import './home.sass'
 import MoviesFilter from '../../Components/MoviesFilter'
@@ -12,18 +12,18 @@ import Actors from '../../Components/Actors'
 
 const Home = () => {
   let { shouldScroll, positionTo } = useScroll()
+  const firstSection = useRef()
+  const secondSection = useRef()
   const scrollFunc = () => {
-    const element1 = document.querySelector('.movies-section')
-    const element2 = document.querySelector('.actors-section')
     if (shouldScroll && positionTo === 1) {
-      element1.scrollIntoView({
+      firstSection.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'end',
       })
     }
     if (shouldScroll && positionTo === 2) {
-      element2.scrollIntoView({
+      secondSection.current.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
         inline: 'end',
@@ -40,7 +40,7 @@ const Home = () => {
   return (
     <div className='home-page'>
       <TopHeader firstText='Movie' secondText='Picker' left='60%' />
-      <section className='movies-section'>
+      <section className='movies-section' ref={firstSection}>
         <MoviesProvider>
           <GenresProvider>
             <MoviesFilter />
@@ -48,7 +48,7 @@ const Home = () => {
           <Movies />
         </MoviesProvider>
       </section>
-      <section className='actors-section'>
+      <section className='actors-section' ref={secondSection}>
         <ActorsProvider>
           <Actors />
         </ActorsProvider>

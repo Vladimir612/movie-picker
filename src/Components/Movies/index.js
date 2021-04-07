@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useMovies } from '../../data/MoviesContext'
 import Loader from '../Loader'
@@ -19,11 +19,17 @@ const Movies = () => {
     })
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (!loading) addAnimationToTitle()
   }, [loading]) // eslint-disable-line react-hooks/exhaustive-deps
 
-  window.addEventListener('resize', addAnimationToTitle)
+  useEffect(() => {
+    window.addEventListener('resize', addAnimationToTitle)
+    return () => {
+      // remove resize listener
+      window.removeEventListener('resize', addAnimationToTitle)
+    }
+  }, [])
 
   return loading ? (
     <div className='loader-wrapper'>

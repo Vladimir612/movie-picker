@@ -1,6 +1,10 @@
 @import '../../Animations/animations'
 @import '../../variables'
 
+=rotate-loader-mixin($border-color, $degrees)
+  border-top: 10px solid $border-color
+  transform: rotate($degrees)
+
 .loading
   width: 12.5rem
   height: 12.5rem
@@ -19,11 +23,9 @@
     box-sizing: border-box
     border-radius: 50%
   &::before
-    border-top: 10px solid $loader-col2
-    transform: rotate(120deg)
+    +rotate-loader-mixin($loader-col2, 120deg)
   &::after
-    border-top: 10px solid $loader-col3
-    transform: rotate(240deg)
+    +rotate-loader-mixin($loader-col3, 240deg)
   span
     position: absolute
     width: 12.5rem
