@@ -84,11 +84,9 @@ export const MoviesProvider = ({ children }) => {
     setLoading(true)
 
     let finalUrl = movieOnKeywordUrl + keyword
-    console.log(finalUrl)
     fetch(finalUrl)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data)
         setMovies(formatMovies(data.results))
       })
       .then(
