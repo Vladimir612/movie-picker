@@ -1,5 +1,6 @@
 <h1>Movie picker</h1>
 <p>This is my first project that i worked on all alone. I built it in React.</p>
+Check i out at: https://best-movie-picker.netlify.app/
 
 <h2>Filter screen</h2>
 
